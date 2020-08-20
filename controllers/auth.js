@@ -12,7 +12,6 @@ const crearUsuario = async(req, res = response) => {
 
         // Validación si el usuario existe, por email
         let usuario = await Usuario.findOne({ email });
-        console.log(usuario);
         if ( usuario ) {
             
             return res.status(400).json({
@@ -59,7 +58,6 @@ const loginUsuario = async(req, res = response) => {
 
         // Validación si el usuario existe, por email
         const usuario = await Usuario.findOne({ email });
-        console.log(usuario);
         if ( !usuario ) {
             
             return res.status(400).json({
@@ -106,7 +104,9 @@ const revalidarToken = async(req, res = response) => {
     
     res.json({
         ok: true,
-        token
+        token,
+        uid,
+        name
     });
 }
 
